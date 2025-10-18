@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogOut, Car, Bike, Zap, TrendingUp } from "lucide-react";
+import { LogOut, Car, Bike, Zap, TrendingUp, ArrowLeft, Home } from "lucide-react";
 import PredictionChart from "@/components/PredictionChart";
 
 type VehicleType = "all" | "car" | "bike" | "ev";
@@ -43,6 +43,10 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userEmail");
+    navigate("/");
+  };
+
+  const handleBackToHome = () => {
     navigate("/");
   };
 
@@ -101,7 +105,18 @@ const Dashboard = () => {
       {/* Header */}
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-foreground">SmartPark Dashboard</h1>
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleBackToHome}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Home
+            </Button>
+            <h1 className="text-2xl font-bold text-foreground">SmartPark Dashboard</h1>
+          </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">{userEmail}</span>
             <Button variant="outline" size="sm" onClick={handleLogout}>

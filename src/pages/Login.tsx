@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { ParkingSquare } from "lucide-react";
+import { ParkingSquare, ArrowLeft, Home } from "lucide-react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +28,18 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-hero p-4">
-      <Card className="w-full max-w-md">
+      {/* Back Button */}
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => navigate("/")}
+        className="absolute top-6 left-6 bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+      >
+        <ArrowLeft className="h-4 w-4 mr-2" />
+        Back to Home
+      </Button>
+
+      <Card className="w-full max-w-md relative">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
             <ParkingSquare className="h-12 w-12 text-primary" />
